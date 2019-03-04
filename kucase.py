@@ -6,7 +6,6 @@ from Config import ConfigParameter
 #!/usr/bin/python
 #-*- encoding:utf-8 -*-
 
-
 class Kucase(ConfigParameter):
     def __init__(self):
         ConfigParameter.__init__(self)
@@ -121,6 +120,7 @@ class Kucase(ConfigParameter):
         url = self.kucase_host+'/lib/testcases/editTestCases.php'
         params = {"edit": "testcase","id":testcaseid}
         response = self.s.get(url, cookies=self.loginresponse.cookies, params=params)
+        response.encoding = 'utf-8'
         soup = BeautifulSoup(response.text)
         #id列表
         ListTeststepId = []
